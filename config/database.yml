@@ -84,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: babbler_production
-  username: babbler
-  password: <%= ENV['DB_PASSWORD'] %>
+  database: <%=['DATABASE_URL'] %>
+  # username: babbler
+  # password: <%= ENV['DB_PASSWORD'] %>
