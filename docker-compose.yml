@@ -1,0 +1,24 @@
+version: '3.1'
+services:
+  
+  babbler:
+    build: .
+    command: bundle exec rails s -p 3000 -b '0.0.0.0'
+    volumes:
+      - ".:/babbler"
+    ports:
+      - 3000:3000
+    depends_on:
+      - db
+
+  db:
+    image: postgres:13.2
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
