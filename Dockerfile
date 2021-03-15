@@ -1,6 +1,7 @@
 FROM ruby:2.7
 RUN apt-get update -qq
 RUN apt-get install -y nodejs
+RUN apt-get install -y npm
 RUN apt-get install -y postgresql-client
 RUN gem install rails
 
@@ -8,6 +9,7 @@ WORKDIR /babbler
 
 COPY Gemfile Gemfile.lock ./
 RUN bundle install
+RUN npm install --global yarn
 
 COPY . .
 
