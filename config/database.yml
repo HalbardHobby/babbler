@@ -20,13 +20,13 @@ default: &default
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  host: <%= ENV['DB_HOST'] %>
-  username: <%= ENV['DB_USERNAME'] %>
-  password: <%= ENV['DB_PASSWORD'] %>
 
 development:
   <<: *default
   database: babbler_development
+  host: <%= ENV['DB_HOST'] %>
+  username: <%= ENV['DB_USERNAME'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -84,6 +84,6 @@ test:
 #
 production:
   <<: *default
-  database: <%=['DATABASE_URL'] %>
+  url: <%=['DATABASE_URL'] %>
   # username: babbler
   # password: <%= ENV['DB_PASSWORD'] %>
