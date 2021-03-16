@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @babble.content %>
+</p>
+
+<p>
+  <strong>Expires at:</strong>
+  <%= @babble.expires_at %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @babble.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_babble_path(@babble) %> |
+<%= link_to 'Back', babbles_path %>

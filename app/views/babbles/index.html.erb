@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Babbles</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Content</th>
+      <th>Expires at</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @babbles.each do |babble| %>
+      <tr>
+        <td><%= babble.content %></td>
+        <td><%= babble.expires_at %></td>
+        <td><%= babble.user_id %></td>
+        <td><%= link_to 'Show', babble %></td>
+        <td><%= link_to 'Edit', edit_babble_path(babble) %></td>
+        <td><%= link_to 'Destroy', babble, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Babble', new_babble_path %>

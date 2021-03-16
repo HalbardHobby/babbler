@@ -1,0 +1,2 @@
+class Babble < ApplicationRecord
+end
