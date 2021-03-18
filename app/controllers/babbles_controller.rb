@@ -4,6 +4,8 @@ class BabblesController < ApplicationController
   # GET /babbles or /babbles.json
   def index
     @babbles = Babble.where("expires_at >= ?", Time.now)
+                     .left_outer_joins(:read_babbles)
+                     #.where(read_babbles: { user_id: current_user.id, read: true })
   end
 
   # GET /babbles/1 or /babbles/1.json
