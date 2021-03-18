@@ -3,7 +3,7 @@ class BabblesController < ApplicationController
 
   # GET /babbles or /babbles.json
   def index
-    @babbles = Babble.all
+    @babbles = Babble.where("expires_at >= ?", Time.now)
   end
 
   # GET /babbles/1 or /babbles/1.json
@@ -21,7 +21,9 @@ class BabblesController < ApplicationController
 
   # POST /babbles or /babbles.json
   def create
-    @babble = Babble.new(babble_params)
+    @babble = Babble.new(
+      babble_params.merge(user_id: current_user.id, expires_at: 1.days.from_now)
+    )
 
     respond_to do |format|
       if @babble.save
