@@ -16,6 +16,13 @@
         <td><%= babble.content %></td>
         <td><%= babble.expires_at %></td>
         <td><%= babble.user_id %></td>
+        
+        <% unless babble.read_babbles[0].nil? || !babble.read_babbles[0].read %>
+          <td>Read</td>
+        <% else %>
+          <td>Not Read</td>
+        <% end %>
+        
         <td><%= link_to 'Show', babble %></td>
         <td><%= link_to 'Edit', edit_babble_path(babble) %></td>
         <td><%= link_to 'Destroy', babble, method: :delete, data: { confirm: 'Are you sure?' } %></td>
