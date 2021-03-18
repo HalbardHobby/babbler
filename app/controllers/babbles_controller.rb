@@ -70,6 +70,6 @@ class BabblesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def babble_params
-      params.require(:babble).permit(:content, :expires_at, :user_id)
+      params.require(:babble).permit(:content)
     end
 end
