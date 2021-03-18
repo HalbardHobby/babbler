@@ -18,13 +18,13 @@
   <div class="field">
     <%= f.label :last_name %><br />
     <%= f.text_field :last_name, autocomplete: "last name", 
-      class: "form-control form-control-lg %>
+      class: "form-control form-control-lg" %>
   </div>
 
   <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autocomplete: "email", 
-      class: "form-control form-control-lg" %>
+      class: "form-control form-control-lg", id:"nicknameInput" %>
   </div>
 
   <div class="field">
@@ -33,13 +33,13 @@
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password", 
-      class: "form-control form-control-lg" %>
+      class: "form-control form-control-lg", id:"nicknameInput" %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password", 
-      class: "form-control form-control-lg" %>
+      class: "form-control form-control-lg", id:"nicknameInput" %>
   </div>
 
   <br>
