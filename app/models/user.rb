@@ -4,4 +4,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
   has_many :babbles
+  has_many :reads, :class_name => "Babble", through: :read_babbles
 end

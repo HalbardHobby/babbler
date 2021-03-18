@@ -1,0 +1,2 @@
+class ReadBabble < ApplicationRecord
+end
