@@ -20,8 +20,7 @@
         <% unless babble.read_babbles[0].nil? || !babble.read_babbles[0].read %>
           <td>Read</td>
         <% else %>
-          <% mark_as_read(current_user.id, babble.id) %>
-          <td>Not Read</td>
+          <td><%= button_to 'Mark as read', babbles_mark_as_read_path, method: :post, params: { babble_id: babble.id } %></td>
         <% end %>
         
         <td><%= link_to 'Show', babble %></td>

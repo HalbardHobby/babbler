@@ -62,8 +62,8 @@ class BabblesController < ApplicationController
     end
   end
 
-  def mark_as_read(user_id, babble_id )
-    read = ReadBabble.find_or_create_by(user_id: user_id, babble_id: babble_id)
+  def mark_as_read
+    read = ReadBabble.find_or_create_by(user_id: current_user.id, babble_id: babble_params[:babble_id])
   end
   helper_method :mark_as_read
 
@@ -75,6 +75,6 @@ class BabblesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def babble_params
-      params.require(:babble).permit(:content)
+      params.permit(:babble, :content, :babble_id)
     end
 end
