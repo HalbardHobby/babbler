@@ -5,7 +5,7 @@ class BabblesController < ApplicationController
   def index
     @babbles = Babble.where("expires_at >= ?", Time.now)
                      .left_outer_joins(:read_babbles)
-                     .where("read_babbles.user_id != ? OR read_babbles.user_id IS NULL",
+                     .where.not("read_babbles.user_id = ? AND read_babbles.user_id IS NOT NULL",
                             current_user.id)
   end
 
