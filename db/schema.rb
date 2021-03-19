@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2021_03_18_001557) do
   create_table "read_babbles", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "babble_id", null: false
-    t.boolean "read", null: false
+    t.boolean "read", default: true, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

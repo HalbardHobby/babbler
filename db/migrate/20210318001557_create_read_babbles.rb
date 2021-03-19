@@ -3,7 +3,7 @@ class CreateReadBabbles < ActiveRecord::Migration[6.1]
     create_table :read_babbles do |t|
       t.integer :user_id, null: false
       t.integer :babble_id, null: false
-      t.boolean :read, null: false
+      t.boolean :read, null: false, default: true
 
       t.timestamps
     end
