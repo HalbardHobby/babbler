@@ -17,7 +17,7 @@
         <td><%= babble.expires_at %></td>
         <td><%= babble.user_id %></td>
         
-        <% unless babble.read_babbles[0].nil? || !babble.read_babbles[0].read %>
+        <% unless babble.read_babbles.find_by(:user_id => current_user.id).nil? %>
           <td>Read</td>
         <% else %>
           <td><%= button_to 'Mark as read', babbles_mark_as_read_path, method: :post, params: { babble: {id: babble.id} } %></td>
