@@ -62,6 +62,11 @@ class BabblesController < ApplicationController
     end
   end
 
+  def mark_as_read(user_id, babble_id )
+    read = ReadBabble.find_or_create_by(user_id: user_id, babble_id: babble_id)
+  end
+  helper_method :mark_as_read
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_babble

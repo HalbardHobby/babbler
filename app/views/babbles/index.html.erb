@@ -20,6 +20,7 @@
         <% unless babble.read_babbles[0].nil? || !babble.read_babbles[0].read %>
           <td>Read</td>
         <% else %>
+          <= mark_as_read(current_user.id, babble.id) %>
           <td>Not Read</td>
         <% end %>
         
