@@ -69,6 +69,7 @@ class BabblesController < ApplicationController
 
   def mark_as_read
     read = ReadBabble.find_or_create_by(user_id: current_user.id, babble_id: babble_params[:id])
+    redirect_to :controller => 'babbles', :action => 'index'
   end
   helper_method :mark_as_read
 
