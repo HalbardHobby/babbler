@@ -1,36 +1,17 @@
 <h1>Babbles</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Expires at</th>
-      <th>User</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @babbles.each do |babble| %>
-      <tr>
-        <td><%= babble.content %></td>
-        <td><%= babble.expires_at %></td>
-        <td><%= babble.user_id %></td>
-        
-        <% unless babble.read_babbles.find_by(:user_id => current_user.id).nil? %>
-          <td>Read</td>
-        <% else %>
-          <td><%= button_to 'Mark as read', babbles_mark_as_read_path, method: :post, params: { babble: {id: babble.id} } %></td>
-        <% end %>
-        
-        <td><%= link_to 'Show', babble %></td>
-        <td><%= link_to 'Edit', edit_babble_path(babble) %></td>
-        <td><%= link_to 'Destroy', babble, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+<% @babbles.each do |babble| %>
+  <div class="alert card card-body alert-dismissible fade show" role="alert">
+    <div class="card card-body">  
+      <h5 class="card-title"><%= babble.content %></h5>
+      <h6 class="card-subtitle mb-2 text-muted"><%= babble.user.nickname %></h6>
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <h6 class="card-subtitle mb-2 text-muted"><%= time_ago_in_words babble.created_at %> ago</h6>
+        <%= button_to 'Mark as read', babbles_mark_as_read_path, method: :post, params: { babble: {id: babble.id} },
+            class: "btn btn-primary", remote: true, "data-bs-dismiss" => "alert"%>
+      </div>
+    </div>
+  </div>
+<% end %>
 
 <%= link_to 'New Babble', new_babble_path %>
