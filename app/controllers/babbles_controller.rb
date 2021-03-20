@@ -3,10 +3,16 @@ class BabblesController < ApplicationController
 
   # GET /babbles or /babbles.json
   def index
+
+    if !user_signed_in?
+    @babbles = nil
+
+    else
     @babbles = Babble.where("expires_at >= ?", Time.now)
                      .left_outer_joins(:read_babbles)
                      .where.not("read_babbles.user_id = ? AND read_babbles.user_id IS NOT NULL",
                             current_user.id)
+    end
   end
 
   # GET /babbles/1 or /babbles/1.json

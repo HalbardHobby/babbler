@@ -1,16 +1,19 @@
+<% if user_signed_in? %>
 
-<%= link_to 'New Babble', new_babble_path, class: "btn btn-primary btn-lg" %>
+  <%= link_to 'New Babble', new_babble_path, class: "btn btn-primary btn-lg" %>
 
-<% @babbles.each do |babble| %>
-  <div class="alert card card-body alert-dismissible fade show" role="alert">
-    <div class="card card-body">  
-      <h5 class="card-title"><%= babble.content %></h5>
-      <h6 class="card-subtitle mb-2 text-muted"><%= babble.user.nickname %></h6>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <h6 class="card-subtitle mb-2 text-muted"><%= time_ago_in_words babble.created_at %> ago</h6>
-        <%= button_to 'Mark as read', babbles_mark_as_read_path, method: :post, params: { babble: {id: babble.id} },
-            class: "btn btn-primary", remote: true, "data-bs-dismiss" => "alert"%>
+  <% @babbles.each do |babble| %>
+    <div class="alert card card-body alert-dismissible fade show" role="alert">
+      <div class="card card-body">  
+        <h5 class="card-title"><%= babble.content %></h5>
+        <h6 class="card-subtitle mb-2 text-muted"><%= babble.user.nickname %></h6>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+          <h6 class="card-subtitle mb-2 text-muted"><%= time_ago_in_words babble.created_at %> ago</h6>
+          <%= button_to 'Mark as read', babbles_mark_as_read_path, method: :post, params: { babble: {id: babble.id} },
+              class: "btn btn-primary", :onClick => "window.location.reload();"%>
+        </div>
       </div>
     </div>
-  </div>
+  <% end %>
+
 <% end %>
