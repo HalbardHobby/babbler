@@ -2,12 +2,6 @@
   <div class="container-fluid">
     <%= link_to 'Babbler', root_path, class: "navbar-brand" %>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <%= link_to "babbles", babbles_path, 
-          :class => "nav-link", :method => :get %>
-        </li>
-      </ul>
       <form class="d-flex">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">  
           <% if user_signed_in? %>
@@ -26,7 +20,7 @@
             <%= link_to "Sign in", new_user_session_path,
             :class => "btn btn-outline-success", :method => :get %>
             <%= link_to "Sign up", new_user_registration_path, 
-            :class => "btn btn-outline-success", :method => :get %>
+            :class => "btn btn-outline-secondary", :method => :get %>
           <% end %>
         </ul>
       </form>
